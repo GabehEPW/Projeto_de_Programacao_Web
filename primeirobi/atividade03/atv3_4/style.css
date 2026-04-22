@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+    border: 2px solid white;
+}
+
+.principal {
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+.em-alta {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.em-alta h2 {
+    width: 200px;
+    height: 50px;
+    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.cards-filmes {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.filme {
+    width: 200px;
+    height: 280px;
+    border: 2px solid white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    font-size: 80px;
+    padding: 10px;
+}
+
+.motivos {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.motivos h2 {
+    width: 350px;
+    height: 50px;
+    border: 2px solid blue;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.cards-motivos {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card {
+    width: 320px;
+    height: 300px;
+    border: 2px solid purple;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card h3 {
+    min-height: 70px;
+    border: 2px solid green;
+    padding: 10px;
+}
+
+.card p {
+    min-height: 80px;
+    border: 2px solid yellow;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+.icone {
+    width: 60px;
+    height: 60px;
+    border: 2px solid orange;
+    align-self: flex-end;
+}
