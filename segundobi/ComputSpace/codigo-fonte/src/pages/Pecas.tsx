@@ -1,3 +1,4 @@
+import { buscarPecas, salvarPecas } from '../services/pecasStorage'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import type { CategoriaPeca, Peca } from '../types/Peca'
@@ -15,7 +16,7 @@ const categorias: CategoriaPeca[] = [
 ]
 
 function Pecas() {
-  const [pecas, setPecas] = useState<Peca[]>([])
+  const [pecas, setPecas] = useState<Peca[]>(() => buscarPecas())
   const [idPecaEditando, setIdPecaEditando] = useState<number | null>(null)
 
   const [nome, setNome] = useState('')
@@ -60,6 +61,7 @@ function Pecas() {
       })
 
       setPecas(pecasAtualizadas)
+      salvarPecas(pecasAtualizadas)
       limparFormulario()
       return
     }
@@ -72,7 +74,10 @@ function Pecas() {
       consumo: Number(consumo),
     }
 
-    setPecas([...pecas, novaPeca])
+    const novasPecas = [...pecas, novaPeca]
+
+    setPecas(novasPecas)
+    salvarPecas(novasPecas)
     limparFormulario()
   }
 
@@ -92,7 +97,9 @@ function Pecas() {
     }
 
     const pecasFiltradas = pecas.filter((peca) => peca.id !== id)
+
     setPecas(pecasFiltradas)
+    salvarPecas(pecasFiltradas)
 
     if (idPecaEditando === id) {
       limparFormulario()
