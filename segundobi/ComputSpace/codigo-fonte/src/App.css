@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.hero {
+  width: 100%;
+  max-width: 900px;
+  padding: 48px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #1e293b, #111827);
+  border: 1px solid #334155;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 48px;
+  line-height: 1.1;
+}
+
+p {
+  max-width: 650px;
+  margin: 0 0 32px;
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  padding: 14px 22px;
+  border-radius: 12px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.actions .secondary {
+  background: transparent;
+  color: #f8fafc;
+  border: 1px solid #475569;
+}
