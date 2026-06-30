@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { FormEvent } from 'react'
 import type { CategoriaPeca, Peca } from '../types/Peca'
 
 const categorias: CategoriaPeca[] = [
@@ -15,17 +16,51 @@ const categorias: CategoriaPeca[] = [
 
 function Pecas() {
   const [pecas, setPecas] = useState<Peca[]>([])
+  const [idPecaEditando, setIdPecaEditando] = useState<number | null>(null)
 
   const [nome, setNome] = useState('')
   const [categoria, setCategoria] = useState<CategoriaPeca>('Processador')
   const [preco, setPreco] = useState('')
   const [consumo, setConsumo] = useState('')
 
-  function cadastrarPeca(event: React.FormEvent) {
+  function limparFormulario() {
+    setNome('')
+    setCategoria('Processador')
+    setPreco('')
+    setConsumo('')
+    setIdPecaEditando(null)
+  }
+
+  function cadastrarOuEditarPeca(event: FormEvent) {
     event.preventDefault()
 
     if (!nome || !preco || !consumo) {
       alert('Preencha todos os campos obrigatórios.')
+      return
+    }
+
+    if (Number(preco) <= 0 || Number(consumo) < 0) {
+      alert('Informe valores válidos para preço e consumo.')
+      return
+    }
+
+    if (idPecaEditando) {
+      const pecasAtualizadas = pecas.map((peca) => {
+        if (peca.id === idPecaEditando) {
+          return {
+            ...peca,
+            nome,
+            categoria,
+            preco: Number(preco),
+            consumo: Number(consumo),
+          }
+        }
+
+        return peca
+      })
+
+      setPecas(pecasAtualizadas)
+      limparFormulario()
       return
     }
 
@@ -38,11 +73,30 @@ function Pecas() {
     }
 
     setPecas([...pecas, novaPeca])
+    limparFormulario()
+  }
 
-    setNome('')
-    setCategoria('Processador')
-    setPreco('')
-    setConsumo('')
+  function editarPeca(peca: Peca) {
+    setIdPecaEditando(peca.id)
+    setNome(peca.nome)
+    setCategoria(peca.categoria)
+    setPreco(String(peca.preco))
+    setConsumo(String(peca.consumo))
+  }
+
+  function excluirPeca(id: number) {
+    const confirmarExclusao = confirm('Deseja realmente excluir esta peça?')
+
+    if (!confirmarExclusao) {
+      return
+    }
+
+    const pecasFiltradas = pecas.filter((peca) => peca.id !== id)
+    setPecas(pecasFiltradas)
+
+    if (idPecaEditando === id) {
+      limparFormulario()
+    }
   }
 
   return (
@@ -53,8 +107,8 @@ function Pecas() {
         Cadastre componentes de computador para usar na montagem de uma configuração.
       </p>
 
-      <form className="form-card" onSubmit={cadastrarPeca}>
-        <h2>Cadastrar peça</h2>
+      <form className="form-card" onSubmit={cadastrarOuEditarPeca}>
+        <h2>{idPecaEditando ? 'Editar peça' : 'Cadastrar peça'}</h2>
 
         <div className="form-grid">
           <label>
@@ -102,9 +156,17 @@ function Pecas() {
           </label>
         </div>
 
-        <button type="submit" className="primary-button">
-          Cadastrar peça
-        </button>
+        <div className="form-actions">
+          <button type="submit" className="primary-button">
+            {idPecaEditando ? 'Salvar alterações' : 'Cadastrar peça'}
+          </button>
+
+          {idPecaEditando && (
+            <button type="button" className="secondary-button" onClick={limparFormulario}>
+              Cancelar edição
+            </button>
+          )}
+        </div>
       </form>
 
       <div className="list-header">
@@ -126,6 +188,7 @@ function Pecas() {
                 <th>Categoria</th>
                 <th>Preço</th>
                 <th>Consumo</th>
+                <th>Ações</th>
               </tr>
             </thead>
 
@@ -136,6 +199,21 @@ function Pecas() {
                   <td>{peca.categoria}</td>
                   <td>R$ {peca.preco.toFixed(2)}</td>
                   <td>{peca.consumo}W</td>
+                  <td>
+                    <div className="table-actions">
+                      <button type="button" onClick={() => editarPeca(peca)}>
+                        Editar
+                      </button>
+
+                      <button
+                        type="button"
+                        className="danger-button"
+                        onClick={() => excluirPeca(peca.id)}
+                      >
+                        Excluir
+                      </button>
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>

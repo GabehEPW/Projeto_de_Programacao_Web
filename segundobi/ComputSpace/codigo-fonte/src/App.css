@@ -245,3 +245,38 @@ tr:last-child td {
     grid-template-columns: 1fr;
   }
 }
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.secondary-button {
+  padding: 13px 20px;
+  border-radius: 12px;
+  background: transparent;
+  color: #f8fafc;
+  border: 1px solid #475569;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.table-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.table-actions button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #334155;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.table-actions .danger-button {
+  background: #dc2626;
+}
