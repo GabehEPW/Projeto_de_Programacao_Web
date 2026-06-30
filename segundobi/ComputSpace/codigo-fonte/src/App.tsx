@@ -1,23 +1,49 @@
+import { useState } from 'react'
 import './App.css'
 
+import Home from './pages/Home'
+import Pecas from './pages/Pecas'
+import Montagem from './pages/Montagem'
+
+type Tela = 'home' | 'pecas' | 'montagem'
+
 function App() {
+  const [telaAtual, setTelaAtual] = useState<Tela>('home')
+
   return (
     <main className="app">
-      <section className="hero">
-        <span className="badge">ComputSpace</span>
+      <aside className="sidebar">
+        <h2>ComputSpace</h2>
 
-        <h1>Monte seu computador de forma simples</h1>
+        <nav>
+          <button
+            className={telaAtual === 'home' ? 'active' : ''}
+            onClick={() => setTelaAtual('home')}
+          >
+            Início
+          </button>
 
-        <p>
-          Sistema para cadastrar peças, consultar componentes e montar uma
-          configuração com cálculo de preço e consumo estimado.
-        </p>
+          <button
+            className={telaAtual === 'pecas' ? 'active' : ''}
+            onClick={() => setTelaAtual('pecas')}
+          >
+            Peças
+          </button>
 
-        <div className="actions">
-          <button>Cadastrar Peças</button>
-          <button className="secondary">Montar PC</button>
-        </div>
-      </section>
+          <button
+            className={telaAtual === 'montagem' ? 'active' : ''}
+            onClick={() => setTelaAtual('montagem')}
+          >
+            Montagem
+          </button>
+        </nav>
+      </aside>
+
+      <div className="content">
+        {telaAtual === 'home' && <Home />}
+        {telaAtual === 'pecas' && <Pecas />}
+        {telaAtual === 'montagem' && <Montagem />}
+      </div>
     </main>
   )
 }
