@@ -74,16 +74,20 @@ function Forum() {
 
   return (
     <section className="page">
-      <div className="page-header">
-        <span className="badge">Comunidade</span>
+      <div className="page-hero compact-hero">
+        <div>
+          <span className="badge">Comunidade</span>
 
-        <h1>Fórum NexusPC</h1>
+          <h1>Fórum NexusPC</h1>
 
-        <p>
-          Espaço para usuários criarem publicações, tirarem dúvidas e
-          compartilharem experiências sobre montagem, upgrades e componentes de
-          computador.
-        </p>
+          <p>
+            Espaço para usuários criarem publicações, tirarem dúvidas e
+            compartilharem experiências sobre montagem, upgrades e componentes de
+            computador.
+          </p>
+        </div>
+
+        <img src="/assets/nexuspc-community.png" alt="" />
       </div>
 
       <form className="form-card" onSubmit={criarPost}>

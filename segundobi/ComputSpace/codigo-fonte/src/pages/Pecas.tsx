@@ -110,11 +110,14 @@ function Pecas() {
 
   return (
     <section className="page">
-      <h1>Peças</h1>
+      <div className="page-header">
+        <span className="badge">Catálogo</span>
+        <h1>Peças</h1>
 
-      <p>
-        Cadastre componentes de computador para usar na montagem de uma configuração.
-      </p>
+        <p>
+          Cadastre componentes de computador para usar na montagem de uma configuração.
+        </p>
+      </div>
 
       <PecaForm
         nome={nome}

@@ -8,47 +8,52 @@ import Forum from './pages/Forum'
 
 type Tela = 'home' | 'pecas' | 'montagem' | 'forum'
 
+const navItems: { id: Tela; label: string }[] = [
+  { id: 'home', label: 'Início' },
+  { id: 'pecas', label: 'Peças' },
+  { id: 'montagem', label: 'Montagem' },
+  { id: 'forum', label: 'Fórum' },
+]
+
 function App() {
   const [telaAtual, setTelaAtual] = useState<Tela>('home')
 
   return (
     <main className="app">
-      <aside className="sidebar">
-        <h2>NexusPC</h2>
+      <header className="topbar">
+        <button
+          type="button"
+          className="brand"
+          onClick={() => setTelaAtual('home')}
+          aria-label="Ir para início"
+        >
+          <img src="/assets/nexuspc-logo-mark.png" alt="" />
+          <span>NexusPC</span>
+        </button>
 
         <nav>
-          <button
-            className={telaAtual === 'home' ? 'active' : ''}
-            onClick={() => setTelaAtual('home')}
-          >
-            Início
-          </button>
-
-          <button
-            className={telaAtual === 'pecas' ? 'active' : ''}
-            onClick={() => setTelaAtual('pecas')}
-          >
-            Peças
-          </button>
-
-          <button
-            className={telaAtual === 'montagem' ? 'active' : ''}
-            onClick={() => setTelaAtual('montagem')}
-          >
-            Montagem
-          </button>
-
-          <button
-            className={telaAtual === 'forum' ? 'active' : ''}
-            onClick={() => setTelaAtual('forum')}
-          >
-            Fórum
-          </button>
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              className={telaAtual === item.id ? 'active' : ''}
+              onClick={() => setTelaAtual(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
         </nav>
-      </aside>
+
+        <button
+          type="button"
+          className="primary-button header-action"
+          onClick={() => setTelaAtual('montagem')}
+        >
+          Montar PC
+        </button>
+      </header>
 
       <div className="content">
-        {telaAtual === 'home' && <Home />}
+        {telaAtual === 'home' && <Home onNavigate={setTelaAtual} />}
         {telaAtual === 'pecas' && <Pecas />}
         {telaAtual === 'montagem' && <Montagem />}
         {telaAtual === 'forum' && <Forum />}

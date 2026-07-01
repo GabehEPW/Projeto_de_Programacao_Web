@@ -53,12 +53,19 @@ function Montagem() {
 
   return (
     <section className="page">
-      <h1>Montagem</h1>
+      <div className="page-hero compact-hero">
+        <div>
+          <span className="badge">Configurador</span>
+          <h1>Montagem</h1>
 
-      <p>
-        Selecione as peças cadastradas para montar uma configuração e calcular
-        o preço total e o consumo estimado.
-      </p>
+          <p>
+            Selecione as peças cadastradas para montar uma configuração e calcular
+            o preço total e o consumo estimado.
+          </p>
+        </div>
+
+        <img src="/assets/nexuspc-builder.png" alt="" />
+      </div>
 
       {pecas.length === 0 ? (
         <div className="empty-state">
