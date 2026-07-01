@@ -44,6 +44,11 @@ Para a Etapa 2, foi escolhido um fluxo central da aplicação: o gerenciamento d
 - Cálculo do preço total da configuração
 - Cálculo do consumo estimado em watts
 - Interface responsiva
+- Tela de fórum da comunidade
+- Criação de posts no fórum
+- Listagem de posts publicados
+- Exclusão de posts
+- Persistência dos posts no LocalStorage
 
 ## Instruções para execução
 

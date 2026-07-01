@@ -4,8 +4,9 @@ import './App.css'
 import Home from './pages/Home'
 import Pecas from './pages/Pecas'
 import Montagem from './pages/Montagem'
+import Forum from './pages/Forum'
 
-type Tela = 'home' | 'pecas' | 'montagem'
+type Tela = 'home' | 'pecas' | 'montagem' | 'forum'
 
 function App() {
   const [telaAtual, setTelaAtual] = useState<Tela>('home')
@@ -36,6 +37,13 @@ function App() {
           >
             Montagem
           </button>
+
+          <button
+            className={telaAtual === 'forum' ? 'active' : ''}
+            onClick={() => setTelaAtual('forum')}
+          >
+            Fórum
+          </button>
         </nav>
       </aside>
 
@@ -43,6 +51,7 @@ function App() {
         {telaAtual === 'home' && <Home />}
         {telaAtual === 'pecas' && <Pecas />}
         {telaAtual === 'montagem' && <Montagem />}
+        {telaAtual === 'forum' && <Forum />}
       </div>
     </main>
   )

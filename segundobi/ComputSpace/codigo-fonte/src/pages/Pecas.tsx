@@ -1,6 +1,8 @@
-import { buscarPecas, salvarPecas } from '../services/pecasStorage'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import PecaForm from '../components/PecaForm'
+import PecaTable from '../components/PecaTable'
+import { buscarPecas, salvarPecas } from '../services/pecasStorage'
 import type { CategoriaPeca, Peca } from '../types/Peca'
 
 const categorias: CategoriaPeca[] = [
@@ -32,7 +34,7 @@ function Pecas() {
     setIdPecaEditando(null)
   }
 
-  function cadastrarOuEditarPeca(event: FormEvent) {
+  function cadastrarOuEditarPeca(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     if (!nome || !preco || !consumo) {
@@ -114,119 +116,26 @@ function Pecas() {
         Cadastre componentes de computador para usar na montagem de uma configuração.
       </p>
 
-      <form className="form-card" onSubmit={cadastrarOuEditarPeca}>
-        <h2>{idPecaEditando ? 'Editar peça' : 'Cadastrar peça'}</h2>
+      <PecaForm
+        nome={nome}
+        categoria={categoria}
+        preco={preco}
+        consumo={consumo}
+        idPecaEditando={idPecaEditando}
+        setNome={setNome}
+        setCategoria={setCategoria}
+        setPreco={setPreco}
+        setConsumo={setConsumo}
+        onSubmit={cadastrarOuEditarPeca}
+        onLimparFormulario={limparFormulario}
+        categorias={categorias}
+      />
 
-        <div className="form-grid">
-          <label>
-            Nome da peça
-            <input
-              type="text"
-              placeholder="Ex: Ryzen 5 5600"
-              value={nome}
-              onChange={(event) => setNome(event.target.value)}
-            />
-          </label>
-
-          <label>
-            Categoria
-            <select
-              value={categoria}
-              onChange={(event) => setCategoria(event.target.value as CategoriaPeca)}
-            >
-              {categorias.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label>
-            Preço
-            <input
-              type="number"
-              placeholder="Ex: 850"
-              value={preco}
-              onChange={(event) => setPreco(event.target.value)}
-            />
-          </label>
-
-          <label>
-            Consumo em watts
-            <input
-              type="number"
-              placeholder="Ex: 65"
-              value={consumo}
-              onChange={(event) => setConsumo(event.target.value)}
-            />
-          </label>
-        </div>
-
-        <div className="form-actions">
-          <button type="submit" className="primary-button">
-            {idPecaEditando ? 'Salvar alterações' : 'Cadastrar peça'}
-          </button>
-
-          {idPecaEditando && (
-            <button type="button" className="secondary-button" onClick={limparFormulario}>
-              Cancelar edição
-            </button>
-          )}
-        </div>
-      </form>
-
-      <div className="list-header">
-        <h2>Peças cadastradas</h2>
-        <span>{pecas.length} peça(s)</span>
-      </div>
-
-      {pecas.length === 0 ? (
-        <div className="empty-state">
-          <h3>Nenhuma peça cadastrada ainda</h3>
-          <p>Cadastre uma peça usando o formulário acima.</p>
-        </div>
-      ) : (
-        <div className="table-card">
-          <table>
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Categoria</th>
-                <th>Preço</th>
-                <th>Consumo</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {pecas.map((peca) => (
-                <tr key={peca.id}>
-                  <td>{peca.nome}</td>
-                  <td>{peca.categoria}</td>
-                  <td>R$ {peca.preco.toFixed(2)}</td>
-                  <td>{peca.consumo}W</td>
-                  <td>
-                    <div className="table-actions">
-                      <button type="button" onClick={() => editarPeca(peca)}>
-                        Editar
-                      </button>
-
-                      <button
-                        type="button"
-                        className="danger-button"
-                        onClick={() => excluirPeca(peca.id)}
-                      >
-                        Excluir
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      <PecaTable
+        pecas={pecas}
+        editarPeca={editarPeca}
+        excluirPeca={excluirPeca}
+      />
     </section>
   )
 }

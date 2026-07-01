@@ -422,6 +422,7 @@ tr:last-child td {
 }
 
 @media (max-width: 800px) {
+
   .builder-grid,
   .summary-values {
     grid-template-columns: 1fr;
@@ -516,5 +517,116 @@ tr:last-child td {
 
   .summary-values strong {
     font-size: 24px;
+  }
+}
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 130px;
+  resize: vertical;
+  padding: 13px 14px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid #3b255f;
+  background: #08040f;
+  color: #f7f2ff;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+}
+
+textarea::placeholder {
+  color: #8f7bb8;
+}
+
+textarea:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.18);
+}
+
+.forum-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.forum-post {
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(24, 16, 38, 0.92);
+  border: 1px solid #3b255f;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+.forum-post:hover {
+  border-color: #8b5cf6;
+  transform: translateY(-2px);
+  transition: 0.2s;
+}
+
+.forum-post-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.forum-post h3 {
+  margin: 8px 0 0;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.forum-post p {
+  max-width: 100%;
+  margin-bottom: 18px;
+  color: #d8c7ff;
+  font-size: 16px;
+}
+
+.forum-category {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.18);
+  color: #d8c7ff;
+  border: 1px solid #6d4aa3;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.forum-post-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #3b255f;
+  color: #d8c7ff;
+  font-size: 14px;
+}
+
+.danger-button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #7f1d1d;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.danger-button:hover {
+  background: #991b1b;
+}
+
+@media (max-width: 700px) {
+
+  .forum-post-header,
+  .forum-post-footer {
+    flex-direction: column;
   }
 }
