@@ -10,7 +10,7 @@ function Home() {
 
   return (
     <section className="page">
-      <span className="badge">ComputSpace</span>
+      <span className="badge">NexusPC</span>
 
       <h1>Monte seu computador de forma simples</h1>
 

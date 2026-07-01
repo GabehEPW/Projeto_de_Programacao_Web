@@ -1,6 +1,6 @@
 import type { Peca } from '../types/Peca'
 
-const CHAVE_PECAS = 'computspace:pecas'
+const CHAVE_PECAS = 'nexuspc:pecas'
 
 export function buscarPecas(): Peca[] {
   const pecasSalvas = localStorage.getItem(CHAVE_PECAS)

@@ -421,3 +421,43 @@ tr:last-child td {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 600px) {
+  .content {
+    padding: 24px 16px;
+  }
+
+  .sidebar {
+    padding: 24px 16px;
+  }
+
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .form-card,
+  .card,
+  .empty-state,
+  .summary-card,
+  .stat-card {
+    padding: 18px;
+  }
+
+  th,
+  td {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .summary-values strong {
+    font-size: 24px;
+  }
+}

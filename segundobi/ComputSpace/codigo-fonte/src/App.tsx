@@ -13,7 +13,7 @@ function App() {
   return (
     <main className="app">
       <aside className="sidebar">
-        <h2>ComputSpace</h2>
+        <h2>NexusPC</h2>
 
         <nav>
           <button
