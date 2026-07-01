@@ -1,7 +1,7 @@
 :root {
   font-family: Arial, Helvetica, sans-serif;
-  color: #f8fafc;
-  background: #0f172a;
+  color: #f7f2ff;
+  background: #08040f;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -18,7 +18,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  background: #0f172a;
+  background: #08040f;
 }
 
 #root {

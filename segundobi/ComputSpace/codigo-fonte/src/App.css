@@ -5,8 +5,8 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #0f172a;
-  color: #f8fafc;
+  background: #08040f;
+  color: #f7f2ff;
 }
 
 button {
@@ -18,14 +18,18 @@ button {
 .app {
   min-height: 100vh;
   display: flex;
-  background: #0f172a;
+  background:
+    radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.12), transparent 28%),
+    #08040f;
 }
 
 .sidebar {
   width: 260px;
   padding: 32px 24px;
-  background: #111827;
-  border-right: 1px solid #334155;
+  background: rgba(16, 8, 31, 0.96);
+  border-right: 1px solid #3b255f;
+  box-shadow: 8px 0 30px rgba(0, 0, 0, 0.25);
 }
 
 .sidebar h2 {
@@ -45,29 +49,33 @@ button {
   padding: 14px 16px;
   border-radius: 12px;
   background: transparent;
-  color: #cbd5e1;
+  color: #d8c7ff;
   font-size: 16px;
   text-align: left;
   transition: 0.2s;
 }
 
 .sidebar button:hover {
-  background: #1e293b;
+  background: #181026;
   color: #ffffff;
 }
 
 .sidebar button.active {
-  background: #2563eb;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
   color: #ffffff;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.28);
 }
 
 .content {
   flex: 1;
   padding: 40px;
+  display: flex;
+  justify-content: center;
 }
 
 .page {
-  max-width: 1100px;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .badge {
@@ -75,22 +83,24 @@ button {
   margin-bottom: 16px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: #2563eb;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
   color: #ffffff;
   font-weight: bold;
   font-size: 14px;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.28);
 }
 
 h1 {
   margin: 0 0 16px;
   font-size: 42px;
   line-height: 1.1;
+  color: #ffffff;
 }
 
 p {
   max-width: 760px;
   margin: 0 0 28px;
-  color: #cbd5e1;
+  color: #d8c7ff;
   font-size: 18px;
   line-height: 1.6;
 }
@@ -106,8 +116,16 @@ p {
 .empty-state {
   padding: 24px;
   border-radius: 18px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: rgba(24, 16, 38, 0.92);
+  border: 1px solid #3b255f;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+.card:hover,
+.empty-state:hover {
+  border-color: #8b5cf6;
+  transform: translateY(-2px);
+  transition: 0.2s;
 }
 
 .card h3,
@@ -130,7 +148,7 @@ p {
   .sidebar {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid #334155;
+    border-bottom: 1px solid #3b255f;
   }
 
   .cards {
@@ -143,12 +161,14 @@ p {
   margin-bottom: 32px;
   padding: 24px;
   border-radius: 18px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: rgba(24, 16, 38, 0.92);
+  border: 1px solid #3b255f;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
 }
 
 .form-card h2 {
   margin: 0 0 20px;
+  color: #ffffff;
 }
 
 .form-grid {
@@ -162,7 +182,7 @@ label {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: #e2e8f0;
+  color: #eee6ff;
   font-size: 14px;
   font-weight: bold;
 }
@@ -172,25 +192,31 @@ select {
   width: 100%;
   padding: 13px 14px;
   border-radius: 12px;
-  border: 1px solid #475569;
-  background: #0f172a;
-  color: #f8fafc;
+  border: 1px solid #3b255f;
+  background: #08040f;
+  color: #f7f2ff;
   font-size: 15px;
   outline: none;
 }
 
 input:focus,
 select:focus {
-  border-color: #2563eb;
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.18);
 }
 
 .primary-button {
   padding: 13px 20px;
   border-radius: 12px;
-  background: #2563eb;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
   color: #ffffff;
   font-size: 15px;
   font-weight: bold;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.28);
+}
+
+.primary-button:hover {
+  filter: brightness(1.08);
 }
 
 .list-header {
@@ -202,17 +228,19 @@ select:focus {
 
 .list-header h2 {
   margin: 0;
+  color: #ffffff;
 }
 
 .list-header span {
-  color: #cbd5e1;
+  color: #d8c7ff;
 }
 
 .table-card {
   overflow-x: auto;
   border-radius: 18px;
-  border: 1px solid #334155;
-  background: #1e293b;
+  border: 1px solid #3b255f;
+  background: rgba(24, 16, 38, 0.92);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
 }
 
 table {
@@ -224,16 +252,16 @@ th,
 td {
   padding: 16px;
   text-align: left;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid #3b255f;
 }
 
 th {
-  color: #cbd5e1;
+  color: #d8c7ff;
   font-size: 14px;
 }
 
 td {
-  color: #f8fafc;
+  color: #f7f2ff;
 }
 
 tr:last-child td {
@@ -256,10 +284,15 @@ tr:last-child td {
   padding: 13px 20px;
   border-radius: 12px;
   background: transparent;
-  color: #f8fafc;
-  border: 1px solid #475569;
+  color: #f7f2ff;
+  border: 1px solid #6d4aa3;
   font-size: 15px;
   font-weight: bold;
+}
+
+.secondary-button:hover {
+  background: #181026;
+  border-color: #a855f7;
 }
 
 .table-actions {
@@ -271,14 +304,22 @@ tr:last-child td {
 .table-actions button {
   padding: 8px 12px;
   border-radius: 10px;
-  background: #334155;
+  background: #3b255f;
   color: #ffffff;
   font-size: 14px;
   font-weight: bold;
 }
 
+.table-actions button:hover {
+  background: #6d4aa3;
+}
+
 .table-actions .danger-button {
-  background: #dc2626;
+  background: #7f1d1d;
+}
+
+.table-actions .danger-button:hover {
+  background: #991b1b;
 }
 
 .builder-grid {
@@ -292,8 +333,15 @@ tr:last-child td {
 .builder-field {
   padding: 20px;
   border-radius: 18px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: rgba(24, 16, 38, 0.92);
+  border: 1px solid #3b255f;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+.builder-field:hover {
+  border-color: #8b5cf6;
+  transform: translateY(-2px);
+  transition: 0.2s;
 }
 
 .builder-field select:disabled {
@@ -304,12 +352,14 @@ tr:last-child td {
 .summary-card {
   padding: 24px;
   border-radius: 18px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: rgba(24, 16, 38, 0.92);
+  border: 1px solid #3b255f;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
 }
 
 .summary-card h2 {
   margin: 0 0 8px;
+  color: #ffffff;
 }
 
 .summary-values {
@@ -322,14 +372,14 @@ tr:last-child td {
 .summary-values div {
   padding: 20px;
   border-radius: 16px;
-  background: #0f172a;
-  border: 1px solid #334155;
+  background: #10081f;
+  border: 1px solid #3b255f;
 }
 
 .summary-values span {
   display: block;
   margin-bottom: 8px;
-  color: #cbd5e1;
+  color: #d8c7ff;
   font-size: 14px;
 }
 
@@ -352,12 +402,13 @@ tr:last-child td {
   gap: 16px;
   padding: 16px;
   border-radius: 14px;
-  background: #0f172a;
-  border: 1px solid #334155;
+  background: #10081f;
+  border: 1px solid #3b255f;
 }
 
 .selected-item h3 {
   margin: 0 0 4px;
+  color: #ffffff;
 }
 
 .selected-item p {
@@ -366,12 +417,11 @@ tr:last-child td {
 }
 
 .selected-item span {
-  color: #cbd5e1;
+  color: #d8c7ff;
   white-space: nowrap;
 }
 
 @media (max-width: 800px) {
-
   .builder-grid,
   .summary-values {
     grid-template-columns: 1fr;
@@ -393,14 +443,21 @@ tr:last-child td {
 .stat-card {
   padding: 22px;
   border-radius: 18px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: rgba(24, 16, 38, 0.92);
+  border: 1px solid #3b255f;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+.stat-card:hover {
+  border-color: #8b5cf6;
+  transform: translateY(-2px);
+  transition: 0.2s;
 }
 
 .stat-card span {
   display: block;
   margin-bottom: 10px;
-  color: #cbd5e1;
+  color: #d8c7ff;
   font-size: 14px;
 }
 
